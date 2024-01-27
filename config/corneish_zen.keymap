@@ -302,6 +302,15 @@
             key-positions = <18 19>;
         };
 
+        EtCom {
+            bindings = <&kp N1>;
+            key-positions = <29 30>;
+        };
+
+        Paste {
+            bindings = <&TD_Paste>;
+            key-positions = <15 16>;
+        };
     };
 
     keymap {
