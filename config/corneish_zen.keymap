@@ -1,7 +1,6 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/keys.h>
 
 / {
     chosen {
@@ -17,7 +16,7 @@
             compatible = "zmk,behavior-hold-tap";
             label = "AUTOSHIFT_HOLD_TAP";
             #binding-cells = <2>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <140>;
             bindings = <&shifted>, <&kp>;
         };
 
@@ -28,7 +27,7 @@
 
             #binding-cells = <2>;
             flavor = "tap-preferred";
-            tapping-term-ms = <150>;
+            tapping-term-ms = <140>;
         };
 
         HT_Eaigu: HT_Eaigu {
@@ -39,7 +38,6 @@
             #binding-cells = <2>;
             tapping-term-ms = <140>;
             flavor = "tap-preferred";
-            hold-trigger-key-positions = <2>;
         };
 
         HT_Egrave: HT_Egrave {
@@ -61,7 +59,6 @@
             #binding-cells = <2>;
             tapping-term-ms = <140>;
             flavor = "tap-preferred";
-            hold-trigger-key-positions = <12>;
         };
 
         HT_Ccedille: HT_Ccedille {
@@ -72,7 +69,6 @@
             #binding-cells = <2>;
             tapping-term-ms = <140>;
             flavor = "tap-preferred";
-            hold-trigger-key-positions = <30>;
         };
 
         HT_Uaigu: HT_Uaigu {
@@ -83,7 +79,6 @@
             #binding-cells = <2>;
             tapping-term-ms = <140>;
             flavor = "tap-preferred";
-            hold-trigger-key-positions = <24>;
         };
 
         MORPH_BkSpcDel_Tap: BkSpcDelTap {
@@ -110,15 +105,44 @@
             bindings = <&MORPH_BkSpcDel_Hold>, <&MORPH_BkSpcDel_Tap>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <150>;
-            flavor = "balanced";
-            hold-trigger-key-positions = <41>;
+            tapping-term-ms = <140>;
+            flavor = "tap-preferred";
         };
 
         Alt_Tab: Alt_Tab {
             compatible = "zmk,behavior-tri-state";
             #binding-cells = <0>;
             bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
+        };
+
+        HT_Copy: HT_Copy {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HT_COPY";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <160>;
+            flavor = "tap-preferred";
+            hold-trigger-key-positions = <14 15>;
+        };
+
+        HT_Paste: HT_Paste {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HT_PASTE";
+            bindings = <&MC_Paste>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <140>;
+            flavor = "tap-preferred";
+        };
+
+        TD_Paste: TD_Paste {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_PASTE";
+            #binding-cells = <0>;
+            bindings = <&HT_Paste 0 LC(V)>, <&none>;
+
+            tapping-term-ms = <150>;
         };
     };
 
@@ -182,6 +206,13 @@
             bindings = <&kp LA(KP_NUMBER_2) &kp LA(KP_NUMBER_3) &kp LA(KP_NUMBER_5)>;
             label = "MC_UAIGU";
         };
+
+        MC_Paste: MC_Paste {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(V) &kp ENTER>;
+            label = "MC_PASTE";
+        };
     };
 
     combos {
@@ -215,6 +246,11 @@
         selectall {
             bindings = <&kp LC(Q)>;
             key-positions = <14 15 16>;
+        };
+
+        Copy {
+            bindings = <&HT_Copy LC(X) LC(C)>;
+            key-positions = <14 15>;
         };
     };
 
@@ -265,10 +301,10 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&kp TAB    &kp EXCL  &kp AT       &kp HASH  &kp DLLR  &kp PRCNT    &kp CARET  &kp AMPS   &kp STAR  &kp LPAR  &kp RPAR  &kp BSPC
-&kp LCTRL  &trans    &kt LA(TAB)  &trans    &trans    &trans       &kp MINUS  &kp EQUAL  &kp LBKT  &kp RBKT  &kp BSLH  &kp GRAVE
-&kp LSHFT  &trans    &trans       &trans    &trans    &trans       &kp UNDER  &kp PLUS   &kp LBRC  &kp RBRC  &kp PIPE  &kp TILDE
-                                  &kp LGUI  &trans    &kp SPACE    &kp RET    &trans     &kp RALT
+&kp TAB    &kp EXCL  &kp AT    &kp HASH  &kp DLLR  &kp PRCNT    &kp CARET  &kp AMPS   &kp STAR  &kp LPAR  &kp RPAR  &kp BSPC
+&kp LCTRL  &trans    &Alt_Tab  &trans    &trans    &trans       &kp MINUS  &kp EQUAL  &kp LBKT  &kp RBKT  &kp BSLH  &kp GRAVE
+&kp LSHFT  &trans    &trans    &trans    &trans    &trans       &kp UNDER  &kp PLUS   &kp LBRC  &kp RBRC  &kp PIPE  &kp TILDE
+                               &kp LGUI  &trans    &kp SPACE    &kp RET    &trans     &kp RALT
             >;
         };
 
