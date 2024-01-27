@@ -17,24 +17,20 @@
             label = "AUTOSHIFT_HOLD_TAP";
             #binding-cells = <2>;
             tapping-term-ms = <140>;
-            bindings = <&shifted>, <&kp>;
+            bindings = <&Eaigu>, <&kp>;
 
             flavor = "tap-preferred";
         };
     };
 
     macros {
-        shifted: macro_shifted_kp {
-            #binding-cells = <1>;
+        Eaigu: macro_shifted_kp {
+            #binding-cells = <0>;
             label = "MACRO_SHIFTED_KP";
-            compatible = "zmk,behavior-macro-one-param";
+            compatible = "zmk,behavior-macro";
             bindings =
-                <&macro_press>,
-                <&kp LSHFT &macro_param_1to1>,
                 <&macro_tap>,
-                <&kp MACRO_PLACEHOLDER>,
-                <&macro_release>,
-                <&kp LSHFT>;
+                <&kp LA(N1) &kp LA(NUMBER_4) &kp LA(NUMBER_4)>;
         };
 
         as: autoshift {
@@ -62,6 +58,11 @@
         paste {
             bindings = <&kp LC(V)>;
             key-positions = <15 16>;
+        };
+
+        underscore {
+            bindings = <&kp N8>;
+            key-positions = <28 29>;
         };
     };
 
