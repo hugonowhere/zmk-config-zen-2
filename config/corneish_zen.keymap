@@ -115,8 +115,9 @@
             hold-trigger-key-positions = <41>;
         };
 
-        Alt_Tab:Alt_Tab {
-            compatible = "tri_state";
+        Alt_Tab: Alt_Tab {
+            compatible = "zmk,behavior-tri-state";
+            #binding-cells = <0>;
             bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
         };
     };
