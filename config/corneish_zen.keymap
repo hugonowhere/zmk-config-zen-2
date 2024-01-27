@@ -11,46 +11,85 @@
 };
 
 / {
-  behaviors {
-    as_ht: autoshift_hold_tap {
-      compatible = "zmk,behavior-hold-tap";
-      label = "AUTOSHIFT_HOLD_TAP";
-      #binding-cells = <2>;
-      tapping-term-ms = <200>;
-      bindings = <&shifted>, <&kp>;
+    behaviors {
+        as_ht: autoshift_hold_tap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "AUTOSHIFT_HOLD_TAP";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            bindings = <&shifted>, <&kp>;
+        };
+
+        BckSpceDel: BckSpceDel {
+            compatible = "zmk,behavior-mod-morph";
+            label = "BCKSPCEDEL";
+            bindings = <&kp BACKSPACE>, <&kp DEL>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LCTL)>;
+        };
+
+        HT_Eaigu: HT_Eaigu {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HT_EAIGU";
+            bindings = <&MC_Eaigu>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <140>;
+            flavor = "tap-preferred";
+            hold-trigger-key-positions = <2>;
+        };
     };
-  };
 
-  macros {
-    shifted: macro_shifted_kp {
-      #binding-cells = <1>;
-      label = "MACRO_SHIFTED_KP";
-      compatible = "zmk,behavior-macro-one-param";
-      bindings =
-        <&macro_press &kp LSHFT>,
-        <&macro_param_1to1 &macro_tap &kp MACRO_PLACEHOLDER>,
-        <&macro_release &kp LSHFT>;
+    macros {
+        shifted: macro_shifted_kp {
+            #binding-cells = <1>;
+            label = "MACRO_SHIFTED_KP";
+            compatible = "zmk,behavior-macro-one-param";
+            bindings =
+                <&macro_press>,
+                <&kp LSHFT &macro_param_1to1>,
+                <&macro_tap>,
+                <&kp MACRO_PLACEHOLDER>,
+                <&macro_release>,
+                <&kp LSHFT>;
+        };
+
+        as: autoshift {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            label = "AUTOSHIFT_KP";
+            bindings =
+                <&macro_press>,
+                <&macro_param_1to1 &macro_param_1to2 &as_ht MACRO_PLACEHOLDER MACRO_PLACEHOLDER>,
+                <&macro_pause_for_release>,
+                <&macro_release>,
+                <&macro_param_1to1 &macro_param_1to2 &as_ht MACRO_PLACEHOLDER MACRO_PLACEHOLDER>;
+        };
+
+        MC_Eaigu: MC_Eaigu {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(KP_NUMBER_1) &kp LA(KP_NUMBER_4) &kp LA(KP_NUMBER_4)>;
+            label = "MC_EAIGU";
+        };
+
+        MC_Egrave: MC_Egrave {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(KP_NUMBER_2) &kp LA(KP_NUMBER_1) &kp LA(KP_NUMBER_2)>;
+            label = "MC_EGRAVE";
+        };
+
+        MC_Ccedille: MC_Ccedille {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(KP_NUMBER_1) &kp LA(KP_NUMBER_2) &kp LA(KP_NUMBER_8)>;
+            label = "MC_CCEDILLE";
+        };
     };
 
-    as: autoshift {
-      compatible = "zmk,behavior-macro-one-param";
-      #binding-cells = <1>;
-      label = "AUTOSHIFT_KP";
-      bindings =
-        <&macro_press>,
-        <&macro_param_1to1>,
-        <&macro_param_1to2>,
-        <&as_ht MACRO_PLACEHOLDER MACRO_PLACEHOLDER>,
-        <&macro_pause_for_release>,
-        <&macro_release>,
-        <&macro_param_1to1>,
-        <&macro_param_1to2>,
-        <&as_ht MACRO_PLACEHOLDER MACRO_PLACEHOLDER>;
-    };
-  };
-
-
-keymap {
+    keymap {
         compatible = "zmk,keymap";
 
         default_layer {
@@ -63,11 +102,11 @@ keymap {
             //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
             bindings = <
-&mt HASH AT_SIGN  &as B  &kp W  &as P         &as O      &kp T              &kp CARET    &as V        &as D                        &as L  &as J  &as W
-&kp LCTRL         &as A  &as U  &as I         &as E      &kp SQT            &as C        &as T        &as S                        &as R  &as N  &as M
-&kp LSHFT         &as X  &as Y  &as COMMA     &as COMMA  &kp B              &kp N        &as Q        &as G                        &as H  &as F  &as K
-                                &lt 3 ESCAPE  &lt 2 TAB  &mt LCTRL ENTER    &lt 1 ENTER  &lt 2 SPACE  &mt LC(BACKSPACE) BACKSPACE
->;
+&mt HASH AT_SIGN  &as B  &HT_Eaigu 0 N2  &as P         &as O      &kp T              &kp CARET    &as V        &as D                        &as L  &as J  &as W
+&kp LCTRL         &as A  &as U           &as I         &as E      &kp SQT            &as C        &as T        &as S                        &as R  &as N  &as M
+&kp LSHFT         &as X  &as Y           &as COMMA     &as COMMA  &kp B              &kp N        &as Q        &as G                        &as H  &as F  &as K
+                                         &lt 3 ESCAPE  &lt 2 TAB  &mt LCTRL ENTER    &lt 1 ENTER  &lt 2 SPACE  &mt LC(BACKSPACE) BACKSPACE
+            >;
         };
 
         lower_layer {
@@ -84,7 +123,7 @@ keymap {
 &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT  &trans  &trans
 &kp LSHFT   &trans        &trans        &trans        &trans        &trans          &trans    &trans    &trans    &trans     &trans  &trans
                                         &kp LGUI      &trans        &trans          &kp RET   &trans    &kp RALT
->;
+            >;
         };
 
         raise_layer {
@@ -101,7 +140,7 @@ keymap {
 &kp LCTRL  &trans    &trans  &trans    &trans    &trans       &kp MINUS  &kp EQUAL  &kp LBKT  &kp RBKT  &kp BSLH  &kp GRAVE
 &kp LSHFT  &trans    &trans  &trans    &trans    &trans       &kp UNDER  &kp PLUS   &kp LBRC  &kp RBRC  &kp PIPE  &kp TILDE
                              &kp LGUI  &trans    &kp SPACE    &kp RET    &trans     &kp RALT
->;
+            >;
         };
 
         layer_3 {
@@ -110,7 +149,7 @@ keymap {
 &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
                         &trans  &trans  &trans    &trans  &trans  &trans
->;
+            >;
         };
     };
 };
