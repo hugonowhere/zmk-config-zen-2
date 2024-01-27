@@ -277,6 +277,11 @@
             key-positions = <14 15>;
         };
 
+        Paste {
+            bindings = <&TD_Paste>;
+            key-positions = <15 16>;
+        };
+
         Dbl_Quot {
             bindings = <&HT_Dbl_Quot 0 N3>;
             key-positions = <16 17>;
@@ -297,20 +302,17 @@
             key-positions = <28 29>;
         };
 
-        tiret {
-            bindings = <&kp N6>;
-            key-positions = <18 19>;
-        };
-
         EtCom {
             bindings = <&kp N1>;
             key-positions = <29 30>;
         };
 
-        Paste {
-            bindings = <&TD_Paste>;
-            key-positions = <15 16>;
+        tiret {
+            bindings = <&kp N6>;
+            key-positions = <18 19>;
         };
+
+        
     };
 
     keymap {
