@@ -20,9 +20,9 @@
             bindings = <&shifted>, <&kp>;
         };
 
-        BckSpceDel: BckSpceDel {
+        MORPH_BkSpcDel_Tap: BkSpcDelTap {
             compatible = "zmk,behavior-mod-morph";
-            label = "BCKSPCEDEL";
+            label = "BACKSPACEDELTAP";
             bindings = <&kp BACKSPACE>, <&kp DEL>;
 
             #binding-cells = <0>;
@@ -82,6 +82,26 @@
             tapping-term-ms = <140>;
             flavor = "tap-preferred";
             hold-trigger-key-positions = <24>;
+        };
+
+        MORPH_BkSpcDel_Hold: MORPH_BkSpcDel_Hold {
+            compatible = "zmk,behavior-mod-morph";
+            label = "MORPH_BACKSPACEDEL_HOLD";
+            bindings = <&kp RC(BACKSPACE)>, <&kp RC(DEL)>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LCTL)>;
+        };
+
+        HT_BkSpcDel: HT_BkSpcDel {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HT_BackSpaceDel";
+            bindings = <&MORPH_BkSpcDel_Hold>, <&MORPH_BkSpcDel_Tap>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;
+            flavor = "balanced";
+            hold-trigger-key-positions = <41>;
         };
     };
 
@@ -147,6 +167,20 @@
         };
     };
 
+    combos {
+        compatible = "zmk,combos";
+
+        underscore {
+            bindings = <&kp N8>;
+            key-positions = <28 29>;
+        };
+
+        tiret {
+            bindings = <&kp NUMBER_6>;
+            key-positions = <18 19>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -160,10 +194,10 @@
             //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
             bindings = <
-&mt HASH AT_SIGN          &as B  &HT_Eaigu 0 N2  &as P         &as O      &HT_Egrave 0 N7    &kp CARET          &as V        &as D                        &as L  &as J  &as W
-&HT_Aaigu 0 N0            &as A  &as U           &as I         &as E      &kp SQT            &as C              &as T        &as S                        &as R  &as N  &as M
-&HT_Uaigu 0 SINGLE_QUOTE  &as X  &as Z           &as Y         &as COMMA  &kp B              &HT_Ccedille 0 N9  &as Q        &as G                        &as H  &as F  &as K
-                                                 &lt 3 ESCAPE  &lt 2 TAB  &mt LCTRL ENTER    &lt 1 ENTER        &lt 2 SPACE  &mt LC(BACKSPACE) BACKSPACE
+&mt HASH AT_SIGN          &as B  &HT_Eaigu 0 N2  &as P         &as O      &HT_Egrave 0 N7    &kp CARET          &as V        &as D             &as L  &as J  &as W
+&HT_Aaigu 0 N0            &as A  &as U           &as I         &as E      &kp SQT            &as C              &as T        &as S             &as R  &as N  &as M
+&HT_Uaigu 0 SINGLE_QUOTE  &as X  &as Z           &as Y         &as COMMA  &kp B              &HT_Ccedille 0 N9  &as Q        &as G             &as H  &as F  &as K
+                                                 &lt 3 ESCAPE  &lt 2 TAB  &mt LCTRL ENTER    &lt 1 ENTER        &lt 2 SPACE  &HT_BkSpcDel 0 0
             >;
         };
 
