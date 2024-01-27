@@ -213,6 +213,13 @@
             bindings = <&kp LC(V) &kp ENTER>;
             label = "MC_PASTE";
         };
+
+        MC_PasteValue: MC_PasteValue {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(LC(V)) &kp V &kp RET>;
+            label = "MC_PASTEVALUE";
+        };
     };
 
     combos {
