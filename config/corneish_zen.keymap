@@ -20,15 +20,6 @@
             bindings = <&shifted>, <&kp>;
         };
 
-        MORPH_BkSpcDel_Tap: BkSpcDelTap {
-            compatible = "zmk,behavior-mod-morph";
-            label = "BACKSPACEDELTAP";
-            bindings = <&kp BACKSPACE>, <&kp DEL>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LCTL)>;
-        };
-
         HT_Eaigu: HT_Eaigu {
             compatible = "zmk,behavior-hold-tap";
             label = "HT_EAIGU";
@@ -82,6 +73,15 @@
             tapping-term-ms = <140>;
             flavor = "tap-preferred";
             hold-trigger-key-positions = <24>;
+        };
+
+        MORPH_BkSpcDel_Tap: BkSpcDelTap {
+            compatible = "zmk,behavior-mod-morph";
+            label = "BACKSPACEDELTAP";
+            bindings = <&kp BACKSPACE>, <&kp DEL>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LCTL)>;
         };
 
         MORPH_BkSpcDel_Hold: MORPH_BkSpcDel_Hold {
@@ -176,8 +176,28 @@
         };
 
         tiret {
-            bindings = <&kp NUMBER_6>;
+            bindings = <&kp N6>;
             key-positions = <18 19>;
+        };
+
+        undo {
+            bindings = <&kp LC(W)>;
+            key-positions = <2 3>;
+        };
+
+        redo {
+            bindings = <&kp LC(Y)>;
+            key-positions = <3 4>;
+        };
+
+        printsc {
+            bindings = <&ht LG(N8) LS(LG(S))>;
+            key-positions = <4 5>;
+        };
+
+        selectall {
+            bindings = <&kp LC(Q)>;
+            key-positions = <14 15 16>;
         };
     };
 
