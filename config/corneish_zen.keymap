@@ -114,6 +114,11 @@
             flavor = "balanced";
             hold-trigger-key-positions = <41>;
         };
+
+        Alt_Tab:Alt_Tab {
+            compatible = "tri_state";
+            bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
+        };
     };
 
     macros {
