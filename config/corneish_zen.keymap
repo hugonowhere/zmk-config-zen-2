@@ -103,6 +103,16 @@
             flavor = "balanced";
             hold-trigger-key-positions = <41>;
         };
+
+        ht: ht {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOLD_TAP_KP";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <150>;
+        };
     };
 
     macros {
