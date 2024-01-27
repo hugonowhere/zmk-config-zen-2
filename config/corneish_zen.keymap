@@ -39,6 +39,50 @@
             flavor = "tap-preferred";
             hold-trigger-key-positions = <2>;
         };
+
+        HT_Egrave: HT_Egrave {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HT_EGRAVE";
+            bindings = <&MC_Egrave>, <&kp>;
+
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <140>;
+            hold-trigger-key-positions = <5>;
+        };
+
+        HT_Aaigu: HT_Aaigu {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HT_AAIGU";
+            bindings = <&MC_Aaigu>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <140>;
+            flavor = "tap-preferred";
+            hold-trigger-key-positions = <12>;
+        };
+
+        HT_Ccedille: HT_Ccedille {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HT_CCEDILLE";
+            bindings = <&MC_Ccedille>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <140>;
+            flavor = "tap-preferred";
+            hold-trigger-key-positions = <30>;
+        };
+
+        HT_Uaigu: HT_Uaigu {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HT_UAIGU";
+            bindings = <&MC_Uaigu>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <140>;
+            flavor = "tap-preferred";
+            hold-trigger-key-positions = <24>;
+        };
     };
 
     macros {
@@ -87,6 +131,20 @@
             bindings = <&kp LA(KP_NUMBER_1) &kp LA(KP_NUMBER_2) &kp LA(KP_NUMBER_8)>;
             label = "MC_CCEDILLE";
         };
+
+        MC_Aaigu: MC_Aaigu {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(KP_N0) &kp LA(KP_NUMBER_1) &kp LA(KP_NUMBER_9) &kp LA(KP_NUMBER_2)>;
+            label = "MC_AAIGU";
+        };
+
+        MC_Uaigu: MC_Uaigu {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(KP_NUMBER_2) &kp LA(KP_NUMBER_3) &kp LA(KP_NUMBER_5)>;
+            label = "MC_UAIGU";
+        };
     };
 
     keymap {
@@ -102,14 +160,14 @@
             //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
             bindings = <
-&mt HASH AT_SIGN  &as B  &HT_Eaigu 0 N2  &as P         &as O      &kp T              &kp CARET    &as V        &as D                        &as L  &as J  &as W
-&kp LCTRL         &as A  &as U           &as I         &as E      &kp SQT            &as C        &as T        &as S                        &as R  &as N  &as M
-&kp LSHFT         &as X  &as Y           &as COMMA     &as COMMA  &kp B              &kp N        &as Q        &as G                        &as H  &as F  &as K
-                                         &lt 3 ESCAPE  &lt 2 TAB  &mt LCTRL ENTER    &lt 1 ENTER  &lt 2 SPACE  &mt LC(BACKSPACE) BACKSPACE
+&mt HASH AT_SIGN          &as B  &HT_Eaigu 0 N2  &as P         &as O      &HT_Egrave 0 N7    &kp CARET          &as V        &as D                        &as L  &as J  &as W
+&HT_Aaigu 0 N0            &as A  &as U           &as I         &as E      &kp SQT            &as C              &as T        &as S                        &as R  &as N  &as M
+&HT_Uaigu 0 SINGLE_QUOTE  &as X  &as Z           &as Y         &as COMMA  &kp B              &HT_Ccedille 0 N9  &as Q        &as G                        &as H  &as F  &as K
+                                                 &lt 3 ESCAPE  &lt 2 TAB  &mt LCTRL ENTER    &lt 1 ENTER        &lt 2 SPACE  &mt LC(BACKSPACE) BACKSPACE
             >;
         };
 
-        lower_layer {
+        layer_1 {
             label = "NUMBER";
 
             // -----------------------------------------------------------------------------------------
@@ -119,15 +177,15 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&kp TAB     &kp N1        &kp N2        &kp N3        &kp N4        &kp N5          &kp N6    &kp N7    &kp N8    &kp N9     &kp N0  &kp BSPC
-&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT  &trans  &trans
-&kp LSHFT   &trans        &trans        &trans        &trans        &trans          &trans    &trans    &trans    &trans     &trans  &trans
-                                        &kp LGUI      &trans        &trans          &kp RET   &trans    &kp RALT
+&kp TAB     &kp N1        &kp N2        &kp N3        &kp N4        &kp N5          &kp N6        &kp N7   &kp N8    &kp N9  &kp DLLR  &kp BSPC
+&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &kp STAR      &kp N4   &kp N5    &kp N6  &kp E     &trans
+&kp LSHFT   &trans        &trans        &trans        &trans        &trans          &kp LS(PLUS)  &kp N1   &kp N2    &kp N3  &kp N3    &trans
+                                        &kp LGUI      &trans        &trans          &kp RET       &kp DOT  &kp RALT
             >;
         };
 
-        raise_layer {
-            label = "SYMBOL";
+        layer_2 {
+            label = "NAVIGATION";
 
             // -----------------------------------------------------------------------------------------
             // |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BKSP |
