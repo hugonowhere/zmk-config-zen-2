@@ -252,16 +252,6 @@
     combos {
         compatible = "zmk,combos";
 
-        underscore {
-            bindings = <&kp N8>;
-            key-positions = <28 29>;
-        };
-
-        tiret {
-            bindings = <&kp N6>;
-            key-positions = <18 19>;
-        };
-
         undo {
             bindings = <&kp LC(W)>;
             key-positions = <2 3>;
@@ -301,6 +291,17 @@
             bindings = <&kp LC(PAGE_DOWN)>;
             key-positions = <27 28>;
         };
+
+        underscore {
+            bindings = <&kp N8>;
+            key-positions = <28 29>;
+        };
+
+        tiret {
+            bindings = <&kp N6>;
+            key-positions = <18 19>;
+        };
+
     };
 
     keymap {
