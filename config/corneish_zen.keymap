@@ -164,6 +164,15 @@
             tapping-term-ms = <140>;
             flavor = "tap-preferred";
         };
+
+        HT_CapsLock: HT_CapsLock {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HT_CAPSLOCK";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <160>;
+        };
     };
 
     macros {
@@ -312,7 +321,10 @@
             key-positions = <18 19>;
         };
 
-        
+        CtrlAltSuppr {
+            bindings = <&kp LC(LA(DEL))>;
+            key-positions = <0 11>;
+        };
     };
 
     keymap {
@@ -331,11 +343,11 @@
 &mt HASH AT_SIGN          &as B  &HT_Eaigu 0 N2  &as P         &as O      &HT_Egrave 0 N7              &kp CARET          &as V        &as D             &as L  &as J  &as W
 &HT_Aaigu 0 N0            &as A  &as U           &as I         &as E      &HT_Apost LS(KP_MINUS) N4    &as C              &as T        &as S             &as R  &as N  &as M
 &HT_Uaigu 0 SINGLE_QUOTE  &as X  &as Z           &as Y         &as COMMA  &kp B                        &HT_Ccedille 0 N9  &as Q        &as G             &as H  &as F  &as K
-                                                 &lt 3 ESCAPE  &lt 2 TAB  &mt LCTRL ENTER              &lt 1 ENTER        &lt 2 SPACE  &HT_BkSpcDel 0 0
+                                                 &lt 2 ESCAPE  &lt 1 TAB  &mt LCTRL ENTER              &lt 2 ENTER        &lt 1 SPACE  &HT_BkSpcDel 0 0
             >;
         };
 
-        layer_1 {
+        layer_2 {
             label = "NUMBER";
 
             // -----------------------------------------------------------------------------------------
@@ -352,7 +364,7 @@
             >;
         };
 
-        layer_2 {
+        layer_1 {
             label = "NAVIGATION";
 
             // -----------------------------------------------------------------------------------------
@@ -362,10 +374,10 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&kp TAB    &kp EXCL  &kp AT    &kp HASH  &kp DLLR  &kp PRCNT    &kp CARET  &kp AMPS   &kp STAR  &kp LPAR  &kp RPAR  &kp BSPC
-&kp LCTRL  &trans    &Alt_Tab  &trans    &trans    &trans       &kp MINUS  &kp EQUAL  &kp LBKT  &kp RBKT  &kp BSLH  &kp GRAVE
-&kp LSHFT  &trans    &trans    &trans    &trans    &trans       &kp UNDER  &kp PLUS   &kp LBRC  &kp RBRC  &kp PIPE  &kp TILDE
-                               &kp LGUI  &trans    &kp SPACE    &kp RET    &trans     &kp RALT
+&kp TAB                       &kp EXCL  &kp AT    &kp HASH  &kp DLLR  &kp PRCNT    &kp CARET  &kp AMPS   &kp STAR  &kp LPAR  &kp RPAR  &kp BSPC
+&kp LCTRL                     &trans    &Alt_Tab  &trans    &trans    &trans       &kp MINUS  &kp EQUAL  &kp LBKT  &kp RBKT  &kp BSLH  &kp GRAVE
+&HT_CapsLock LEFT_SHIFT CAPS  &trans    &trans    &trans    &trans    &trans       &kp UNDER  &kp PLUS   &kp LBRC  &kp RBRC  &kp PIPE  &kp TILDE
+                                                  &kp LGUI  &trans    &kp SPACE    &kp RET    &trans     &kp RALT
             >;
         };
 
