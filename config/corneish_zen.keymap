@@ -144,6 +144,26 @@
 
             tapping-term-ms = <150>;
         };
+
+        HT_Dbl_Quot: HT_Dbl_Quot {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HT_DBL_QUOT";
+            bindings = <&MC_Dbl_Quot>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <140>;
+            flavor = "tap-preferred";
+        };
+
+        HT_Apost: HT_Apost {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HT_APOST";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <140>;
+            flavor = "tap-preferred";
+        };
     };
 
     macros {
@@ -220,6 +240,13 @@
             bindings = <&kp LA(LC(V)) &kp V &kp RET>;
             label = "MC_PASTEVALUE";
         };
+
+        MC_Dbl_Quot: MC_Dbl_Quot {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp N3 &kp N3 &kp LEFT>;
+            label = "MC_DBL_QUOT";
+        };
     };
 
     combos {
@@ -259,6 +286,21 @@
             bindings = <&HT_Copy LC(X) LC(C)>;
             key-positions = <14 15>;
         };
+
+        Dbl_Quot {
+            bindings = <&HT_Dbl_Quot 0 N3>;
+            key-positions = <16 17>;
+        };
+
+        PreviousTab {
+            bindings = <&kp LC(PAGE_UP)>;
+            key-positions = <26 27>;
+        };
+
+        NextTab {
+            bindings = <&kp LC(PAGE_DOWN)>;
+            key-positions = <27 28>;
+        };
     };
 
     keymap {
@@ -274,10 +316,10 @@
             //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
             bindings = <
-&mt HASH AT_SIGN          &as B  &HT_Eaigu 0 N2  &as P         &as O      &HT_Egrave 0 N7    &kp CARET          &as V        &as D             &as L  &as J  &as W
-&HT_Aaigu 0 N0            &as A  &as U           &as I         &as E      &kp SQT            &as C              &as T        &as S             &as R  &as N  &as M
-&HT_Uaigu 0 SINGLE_QUOTE  &as X  &as Z           &as Y         &as COMMA  &kp B              &HT_Ccedille 0 N9  &as Q        &as G             &as H  &as F  &as K
-                                                 &lt 3 ESCAPE  &lt 2 TAB  &mt LCTRL ENTER    &lt 1 ENTER        &lt 2 SPACE  &HT_BkSpcDel 0 0
+&mt HASH AT_SIGN          &as B  &HT_Eaigu 0 N2  &as P         &as O      &HT_Egrave 0 N7              &kp CARET          &as V        &as D             &as L  &as J  &as W
+&HT_Aaigu 0 N0            &as A  &as U           &as I         &as E      &HT_Apost LS(KP_MINUS) N4    &as C              &as T        &as S             &as R  &as N  &as M
+&HT_Uaigu 0 SINGLE_QUOTE  &as X  &as Z           &as Y         &as COMMA  &kp B                        &HT_Ccedille 0 N9  &as Q        &as G             &as H  &as F  &as K
+                                                 &lt 3 ESCAPE  &lt 2 TAB  &mt LCTRL ENTER              &lt 1 ENTER        &lt 2 SPACE  &HT_BkSpcDel 0 0
             >;
         };
 
