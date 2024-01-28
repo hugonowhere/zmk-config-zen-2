@@ -361,36 +361,41 @@
         PreviousTab {
             bindings = <&kp LC(PAGE_UP)>;
             key-positions = <26 27>;
+            layers = <0>;
         };
 
         NextTab {
             bindings = <&kp LC(PAGE_DOWN)>;
             key-positions = <27 28>;
+            layers = <0>;
         };
 
         XLS_AddTab {
             bindings = <&HT_XLS_addTab 0 LS(F11)>;
             key-positions = <26 27 28>;
+            layers = <0>;
         };
 
         //--------uniquement layer 2----------
-        PreviousBT {
+
+        L2_PreviousBT {
             bindings = <&bt BT_PRV>;
             key-positions = <26 27>;
             layers = <2>;
         };
 
-        NextBT {
+        L2_NextBT {
             bindings = <&bt BT_NXT>;
             key-positions = <27 28>;
             layers = <2>;
         };
 
-        ClearBT {
+        L2_ClearBT {
             bindings = <&bt BT_CLR>;
             key-positions = <26 27 28>;
             layers = <2>;
         };
+
         //--------uniquement layer 2----------
 
         underscore {
@@ -422,8 +427,6 @@
             bindings = <&kp LA(LC(K))>;
             key-positions = <35 34>;
         };
-
-        
     };
 
     keymap {
