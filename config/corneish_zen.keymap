@@ -211,6 +211,16 @@
             #binding-cells = <0>;
             mods = <(MOD_LCTL)>;
         };
+
+        HT_XLS_addTab: HT_XLS_addTab {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HT_XLS_ADDTAB";
+            bindings = <&MC_XLS_SupprTab>, <&kp>;
+
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <150>;
+        };
     };
 
     macros {
@@ -300,6 +310,13 @@
             #binding-cells = <0>;
             bindings = <&kt LS(KP_COMMA) &kp LS(KP_COMMA) &kp LS(KP_COMMA)>;
             label = "THREE_DOTS";
+        };
+
+        MC_XLS_SupprTab: MC_XLS_SupprTab {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LALT &kp L &kp U &kp S &kp F>;
+            label = "MC_XLS_SUPPRTAB";
         };
     };
 
@@ -397,6 +414,11 @@
             bindings = <&bt BT_CLR>;
             key-positions = <26 27 28>;
             layers = <2>;
+        };
+
+        XLS_AddTab {
+            bindings = <&HT_XLS_addTab 0 LS(F11)>;
+            key-positions = <26 27 28>;
         };
     };
 
