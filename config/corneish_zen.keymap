@@ -8,6 +8,11 @@
     flavor = "tap-unless-interrupted";
 };
 
+&mt {
+    tapping-term-ms = <135>;
+    flavor = "hold-preferred";
+};
+
 / {
     chosen {
         zmk,matrix_transform = &default_transform;
