@@ -368,6 +368,31 @@
             key-positions = <27 28>;
         };
 
+        XLS_AddTab {
+            bindings = <&HT_XLS_addTab 0 LS(F11)>;
+            key-positions = <26 27 28>;
+        };
+
+        //--------uniquement layer 2----------
+        PreviousBT {
+            bindings = <&bt BT_PRV>;
+            key-positions = <26 27>;
+            layers = <2>;
+        };
+
+        NextBT {
+            bindings = <&bt BT_NXT>;
+            key-positions = <27 28>;
+            layers = <2>;
+        };
+
+        ClearBT {
+            bindings = <&bt BT_CLR>;
+            key-positions = <26 27 28>;
+            layers = <2>;
+        };
+        //--------uniquement layer 2----------
+
         underscore {
             bindings = <&kp N8>;
             key-positions = <28 29>;
@@ -398,28 +423,7 @@
             key-positions = <35 34>;
         };
 
-        PreviousBT {
-            bindings = <&bt BT_PRV>;
-            key-positions = <26 27>;
-            layers = <2>;
-        };
-
-        NextBT {
-            bindings = <&bt BT_NXT>;
-            key-positions = <27 28>;
-            layers = <2>;
-        };
-
-        ClearBT {
-            bindings = <&bt BT_CLR>;
-            key-positions = <26 27 28>;
-            layers = <2>;
-        };
-
-        XLS_AddTab {
-            bindings = <&HT_XLS_addTab 0 LS(F11)>;
-            key-positions = <26 27 28>;
-        };
+        
     };
 
     keymap {
