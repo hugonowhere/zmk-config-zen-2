@@ -272,7 +272,7 @@
         };
 
         printsc {
-            bindings = <&ht LG(N8) LS(LG(S))>;
+            bindings = <&ht LG(N3) LS(LG(S))>;
             key-positions = <4 5>;
         };
 
@@ -325,6 +325,34 @@
             bindings = <&kp LC(LA(DEL))>;
             key-positions = <0 11>;
         };
+
+        Mute {
+            bindings = <&kp K_MUTE>;
+            key-positions = <10 11>;
+        };
+
+        TCLOCK {
+            bindings = <&kp LA(LC(K))>;
+            key-positions = <35 34>;
+        };
+
+        PreviousBT {
+            bindings = <&bt BT_PRV>;
+            key-positions = <26 27>;
+            layers = <2>;
+        };
+
+        NextBT {
+            bindings = <&bt BT_NXT>;
+            key-positions = <27 28>;
+            layers = <2>;
+        };
+
+        ClearBT {
+            bindings = <&bt BT_CLR>;
+            key-positions = <26 27 28>;
+            layers = <2>;
+        };
     };
 
     keymap {
@@ -343,24 +371,33 @@
         layer_1 {
             label = "NAVIGATION";
             bindings = <
-&trans                        &trans        &trans        &trans         &trans  &trans    &kp PAGE_UP    &kp HOME       &kp UP    &kp END    &kp C_BRI_UP  &kp C_VOLUME_UP
-&kp LEFT_GUI                  &trans        &Alt_Tab      &trans         &trans  &trans    &kp PAGE_DOWN  &kp LEFT       &kp DOWN  &kp RIGHT  &kp C_BRI_DN  &kp C_VOL_DN
-&HT_CapsLock LEFT_SHIFT CAPS  &kp LEFT_ALT  &kp LA(LEFT)  &kp LA(RIGHT)  &trans  &trans    &trans         &trans         &trans    &trans     &trans        &trans
-                                                          &kp LGUI       &trans  &trans    &kp LA(ENTER)  &kp LS(SPACE)  &trans
+&trans                        &trans        &trans        &trans         &trans     &trans    &kp PAGE_UP    &kp HOME       &kp UP      &kp END     &kp C_VOL_DN  &kp C_VOLUME_UP
+&kp LEFT_GUI                  &trans        &Alt_Tab      &trans         &trans     &trans    &kp PAGE_DOWN  &kp LEFT       &kp DOWN    &kp RIGHT   &kp C_BRI_DN  &kp C_BRI_UP
+&HT_CapsLock LEFT_SHIFT CAPS  &kp LEFT_ALT  &kp LA(LEFT)  &kp LA(RIGHT)  &trans     &trans    &kp LG(N4)     &kp LG(N5)     &kp LG(N6)  &kp LG(N7)  &kp LG(N8)    &kp LG(N9)
+                                                          &kp LGUI       &lt 4 TAB  &trans    &kp LA(ENTER)  &kp LS(SPACE)  &trans
             >;
         };
 
         layer_2 {
             label = "NUMBER";
             bindings = <
-&kp TAB     &kp N1        &kp N2        &kp N3        &kp N4        &kp N5          &kp N6        &kp N7   &kp N8    &kp N9  &kp DLLR  &kp BSPC
-&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &kp STAR      &kp N4   &kp N5    &kp N6  &kp E     &trans
-&kp LSHFT   &trans        &trans        &trans        &trans        &trans          &kp LS(PLUS)  &kp N1   &kp N2    &kp N3  &kp N3    &trans
-                                        &kp LGUI      &trans        &trans          &kp RET       &kp DOT  &kp RALT
+&kp LG(N1)  &trans        &trans        &trans        &trans        &trans          &trans        &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp DLLR     &kp KP_NUMLOCK
+&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &kp STAR      &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp RA(E)    &kp PAUSE_BREAK
+&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &kp LS(PLUS)  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp LS(SQT)  &trans
+                                        &kp LGUI      &lt 3 TAB     &trans          &trans        &kp DOT          &kp KP_N0
             >;
         };
 
         layer_3 {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &kp F7  &kp F8  &kp F9  &kp F12  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &kp F4  &kp F5  &kp F6  &kp F11  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &kp F1  &kp F2  &kp F3  &kp F10  &trans
+                        &trans  &trans  &trans    &trans  &trans  &trans
+            >;
+        };
+
+        layer_4 {
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
