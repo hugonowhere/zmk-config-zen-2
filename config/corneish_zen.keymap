@@ -3,6 +3,11 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/keys.h>
 
+&lt {
+    tapping-term-ms = <135>;
+    flavor = "tap-unless-interrupted";
+};
+
 / {
     chosen {
         zmk,matrix_transform = &default_transform;
@@ -28,7 +33,7 @@
 
             #binding-cells = <2>;
             flavor = "tap-preferred";
-            tapping-term-ms = <140>;
+            tapping-term-ms = <135>;
         };
 
         HT_Eaigu: HT_Eaigu {
