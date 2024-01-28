@@ -456,8 +456,8 @@
             label = "NUMBER";
             bindings = <
 &kp LG(N1)  &trans        &trans        &trans        &trans        &trans          &trans        &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp DLLR     &kp KP_NUMLOCK
-&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &kp STAR      &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp RA(E)    &kp PAUSE_BREAK
-&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &kp LS(PLUS)  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp LS(SQT)  &trans
+&trans      &trans        &trans        &trans        &trans        &trans          &kp STAR      &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp RA(E)    &kp PAUSE_BREAK
+&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &kp LS(PLUS)  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp LS(SQT)  &kp LC(LA(DEL))
                                         &kp LGUI      &lt 3 TAB     &trans          &trans        &kp DOT          &kp KP_N0
             >;
         };
